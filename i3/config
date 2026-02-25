@@ -1,11 +1,11 @@
 ### Variables for settings ###
-set $mod                Mod4
-set $amod               Mod1
-set $smod               Shift
-set $wm_setting_font    pango:Iosevka Nerd Font Mono, Semibold 11
+set $mod                 Mod4
+set $amod                Mod1
+set $smod                Shift
+set $wm_setting_font     pango:Iosevka Nerd Font Mono, Semibold 11
 
 set $wm_setting_gap_width     5
-set $wm_setting_gap_heigth    5
+set $wm_setting_gap_heigth    0 # Change this back to 5 if using anything other than polybar and my dots for it
 
 set $wm_setting_border_size   2
 set $wm_setting_key_left      Left
@@ -16,7 +16,7 @@ set $wm_setting_key_right     Right
 ### Application Variables ###
 set $wm_setting_app_terminal  alacritty
 set $wm_setting_app_launcher  rofi -show drun
-set $wm_setting_app_files      pcmanfm
+set $wm_setting_app_files     pcmanfm
 
 set $wm_color_border_active_bg        #7aa2f7
 set $wm_color_border_active_fg        #1a1b26
@@ -29,7 +29,7 @@ exec --no-startup-id dbus-update-activation-environment --systemd DISPLAY I3SOCK
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk &
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
-exec --no-startup-id pkill dunst && dunst &
+exec_always --no-startup-id dunst &
 
 ### Launch Polybar ###
 exec_always --no-startup-id "killall -q polybar; polybar main &"
