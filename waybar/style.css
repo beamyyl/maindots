@@ -1,0 +1,72 @@
+@define-color bg #2E3440;
+@define-color light-bg #3B4252;
+@define-color accent #81A1C1;
+@define-color text #ECEFF4;
+@define-color urgent #BF616A;
+
+* {
+    font-family: "Iosevka Nerd Font";
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(30, 34, 42, 0.7);
+    color: @text;
+    border-radius: 15px;
+}
+
+#custom-launcher,
+#workspaces,
+#window,
+#tray,
+#battery,
+#pulseaudio,
+#clock,
+#custom-exit {
+    background-color: @light-bg;
+    color: @text;
+    border-radius: 15px; 
+    margin: 5px 3px;
+    padding: 0px 12px;
+}
+
+#custom-launcher {
+    color: @accent;
+    margin-left: 10px;
+}
+
+#workspaces button {
+    color: @text;
+    padding: 0 5px;
+    border-radius: 10px;
+}
+
+#workspaces button.focused {
+    color: @accent;
+    background-color: rgba(129, 161, 193, 0.1);
+    border-bottom: 2px solid @accent;
+}
+
+#workspaces button.urgent {
+    color: @urgent;
+}
+
+#battery.warning {
+    color: #EBCB8B;
+}
+
+#battery.critical {
+    color: @urgent;
+}
+
+#pulseaudio.muted {
+    color: #4C566A;
+}
+
+#custom-exit {
+    margin-right: 10px;
+    color: @urgent;
+}

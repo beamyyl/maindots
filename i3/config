@@ -1,0 +1,157 @@
+### Variables for settings ###
+set $mod                Mod4
+set $amod               Mod1
+set $smod               Shift
+set $wm_setting_font    pango:Iosevka Nerd Font Mono, Semibold 11
+
+set $wm_setting_gap_width     5
+set $wm_setting_gap_heigth    5
+
+set $wm_setting_border_size   2
+set $wm_setting_key_left      Left
+set $wm_setting_key_down      Down
+set $wm_setting_key_up        Up
+set $wm_setting_key_right     Right
+
+### Application Variables ###
+set $wm_setting_app_terminal  alacritty
+set $wm_setting_app_launcher  rofi -show drun
+set $wm_setting_app_files      pcmanfm
+
+set $wm_color_border_active_bg        #7aa2f7
+set $wm_color_border_active_fg        #1a1b26
+set $wm_color_border_inactive_bg      #24283b
+set $wm_color_border_inactive_fg      #c0caf5
+set $wm_color_background              #1a1b26
+
+### Autostart ###
+exec --no-startup-id dbus-update-activation-environment --systemd DISPLAY I3SOCK XDG_CURRENT_DESKTOP=i3
+exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk &
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+exec --no-startup-id pkill dunst && dunst &
+
+### Launch Polybar ###
+exec_always --no-startup-id "killall -q polybar; polybar main &"
+
+### Applications ###
+# Start terminal
+bindsym Control+$amod+t exec $wm_setting_app_terminal
+
+# Start file manager
+bindsym $mod+e exec $wm_setting_app_files
+
+# Start program launcher
+bindsym $mod+r exec $wm_setting_app_launcher
+
+# Screenshot
+bindsym Print exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png"
+
+### Workspaces ###
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+$smod+1 move container to workspace $ws1
+bindsym $mod+$smod+2 move container to workspace $ws2
+bindsym $mod+$smod+3 move container to workspace $ws3
+bindsym $mod+$smod+4 move container to workspace $ws4
+bindsym $mod+$smod+5 move container to workspace $ws5
+bindsym $mod+$smod+6 move container to workspace $ws6
+bindsym $mod+$smod+7 move container to workspace $ws7
+bindsym $mod+$smod+8 move container to workspace $ws8
+bindsym $mod+$smod+9 move container to workspace $ws9
+bindsym $mod+$smod+0 move container to workspace $ws10
+
+### Audio
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
+
+### Brightness (with brightnessctl)
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+### Window sizes and positions ###
+bindsym $mod+$wm_setting_key_left        focus left
+bindsym $mod+$wm_setting_key_down        focus down
+bindsym $mod+$wm_setting_key_up          focus up
+bindsym $mod+$wm_setting_key_right       focus right
+bindsym $amod+Tab focus next
+bindsym $amod+F4 kill
+
+bindsym $mod+$smod+$wm_setting_key_left  move left
+bindsym $mod+$smod+$wm_setting_key_down  move down
+bindsym $mod+$smod+$wm_setting_key_up    move up
+bindsym $mod+$smod+$wm_setting_key_right move right
+
+# Resize window mode
+mode "resize" {
+    bindsym $wm_setting_key_left  resize shrink width 10 px or 10 ppt
+    bindsym $wm_setting_key_up  resize grow height 10 px or 10 ppt
+    bindsym $wm_setting_key_down    resize shrink height 10 px or 10 ppt
+    bindsym $wm_setting_key_right resize grow width 10 px or 10 ppt
+    
+    bindsym $smod+$wm_setting_key_left  gaps horizontal minus 5
+    bindsym $smod+$wm_setting_key_down  gaps horizontal plus 5
+    bindsym $smod+$wm_setting_key_up    gaps vertical minus 5
+    bindsym $smod+$wm_setting_key_right gaps vertical plus 5
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Enter Resize Mode
+bindsym $mod+$smod+r mode "resize"
+
+### Gaps ###
+gaps inner 5
+gaps outer 5
+gaps horizontal $wm_setting_gap_width
+gaps vertical   $wm_setting_gap_heigth
+#smart_gaps on
+
+### Borders ###
+default_border pixel $wm_setting_border_size
+default_floating_border pixel $wm_setting_border_size
+#smart_borders on
+
+### Colors ###
+client.focused          $wm_color_border_active_bg   $wm_color_border_active_bg   $wm_color_border_active_fg   $wm_color_border_active_bg
+client.focused_inactive $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg
+client.unfocused        $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg
+client.urgent           #f7768e                      #f7768e                      #1a1b26                      #f7768e
+client.placeholder      $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg
+client.background       $wm_color_background
+
+### Miscellaneous settings ###
+font $wm_setting_font
+floating_modifier $mod
+bindsym $mod+f fullscreen toggle
+bindsym $mod+t floating toggle
+bindsym $mod+$smod+q kill
+
+# Reload/Restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+s restart
+
+# Exit i3
+bindsym $mod+$smod+e exec i3-msg exit
