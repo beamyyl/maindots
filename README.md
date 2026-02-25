@@ -1,0 +1,1 @@
+i3 polybar xorg any_terminal_emulator picom xclip nerdfonts dunst libnotify i3status i3lock brightnessctl xwallpaper i3blocks dmenu hyprland rofi waybar hyprpaper alacritty hyprshot pcmanfm ttf-iosevka-nerd alacritty picom kitty neovim rofi btop
