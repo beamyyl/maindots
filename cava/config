@@ -1,8 +1,8 @@
 [general]
-framerate = 60
+framerate = 90
 autosens = 1
 bars = 0
-bar_width = 2
+bar_width = 1.88
 bar_spacing = 1
 
 [input]
@@ -26,7 +26,7 @@ gradient_color_8 = '#f7768e'
 
 [smoothing]
 monstercat = 1
-waves = 0
+waves = 0.5
 noise_reduction = 0.77
 
 [eq]
