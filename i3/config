@@ -5,7 +5,7 @@ set $smod                Shift
 set $wm_setting_font     pango:Iosevka Nerd Font Mono, Semibold 11
 
 set $wm_setting_gap_width     5
-set $wm_setting_gap_heigth    0 # Change this back to 5 if using anything other than polybar and my dots for it
+set $wm_setting_gap_heigth    0
 
 set $wm_setting_border_size   2
 set $wm_setting_key_left      Left
