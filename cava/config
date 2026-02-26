@@ -10,7 +10,7 @@ method = pulse
 source = auto
 
 [output]
-method = ncurses
+method = noncurses
 
 [color]
 gradient = 1
