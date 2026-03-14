@@ -1,0 +1,20 @@
+separator=false
+markup=pango
+separator_block_width=10
+
+[apps]
+full_text=<span background="#24283b" color="#7aa2f7"> 󰍜 Apps </span>
+command=rofi -show drun
+
+[volume]
+command=sh -c 'wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk "{print \"󰕾 \" int(\$2*100)\"%\"}" | xargs -I {} echo "<span background=\"#24283b\" color=\"#c0caf5\"> {} </span>"'
+interval=1
+command_click=pavucontrol
+
+[clock]
+command=date '+<span background="#24283b" color="#c0caf5">  %H:%M %d/%m/%Y </span>'
+interval=1
+
+[logout]
+full_text=<span background="#24283b" color="#f7768e"> 󰗼 Exit </span>
+command=i3-msg exit
