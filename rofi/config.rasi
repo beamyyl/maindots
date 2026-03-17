@@ -6,13 +6,13 @@ configuration {
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
+    sidebar-mode: false;
 
-    display-drun: "   Apps ";
-    display-run: "   Run ";
-    display-window: "   Windows ";
+    display-drun: " Apps ";
+    display-run: " Run ";
+    display-window: " Windows ";
 
-    sidebar-mode: true;
-    font: "Iosevka Nerd Font ExtraBold 12";
+    font: "Iosevka Nerd Font ExtraBold 13";
 }
 
 @theme "/dev/null"
@@ -27,102 +27,89 @@ configuration {
     fg-col2: #f7768e;
     grey: #565f89;
 
-    width: 560;
+    width: 500;
     background-color: transparent;
 }
 
-/* Window */
 window {
-    height: 420px;
+    location: center;
+    anchor: center;
+    height: 320px;
     border: 2px;
-    border-radius: 12px;
+    border-radius: 16px;
     border-color: @border-col;
     background-color: @bg-col;
+    padding: 20px;
 }
 
-/* Layout */
 mainbox {
-    spacing: 8px;
-    padding: 10px;
-    background-color: @bg-col;
+    spacing: 12px;
+    background-color: transparent;
 }
 
-/* Input bar */
 inputbar {
     children: [prompt, entry];
     background-color: @bg-col-light;
-    border-radius: 8px;
-    padding: 6px;
+    border-radius: 12px;
+    padding: 10px;
 }
 
-/* Prompt with icon */
 prompt {
     text-color: @blue;
     background-color: transparent;
-    padding: 6px;
     content: "  ";
 }
 
-/* Input */
 entry {
     text-color: @fg-col;
     background-color: transparent;
-    padding: 6px;
 }
 
-/* List */
 listview {
     columns: 1;
-    lines: 7;
-    spacing: 4px;
-    margin: 6px 0px 0px 0px;
+    lines: 6;
+    spacing: 6px;
     background-color: transparent;
 }
 
-/* Elements */
 element {
-    padding: 8px;
-    border-radius: 6px;
-    background-color: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: @bg-col-light;
     text-color: @fg-col;
 }
 
-/* Selected */
 element selected {
-    background-color: @bg-col-light;
-    text-color: @blue;
+    background-color: @blue;
+    text-color: @bg-col;
 }
 
-/* Icons */
 element-icon {
-    size: 26px;
+    size: 28px;
     background-color: transparent;
 }
 
-/* Text */
 element-text {
     background-color: transparent;
     text-color: inherit;
     vertical-align: 0.5;
 }
 
-/* Mode switcher (top tabs vibe) */
 mode-switcher {
-    spacing: 6px;
-    margin: 0px 0px 4px 0px;
+    enabled: false;
+}
+
+button {
     background-color: transparent;
 }
 
-/* Tabs */
-button {
-    padding: 6px 10px;
-    border-radius: 6px;
+message {
     background-color: @bg-col-light;
-    text-color: @grey;
+    border-radius: 10px;
+    padding: 6px;
 }
 
-/* Active tab */
-button selected {
-    background-color: @blue;
-    text-color: @bg-col;
+textbox {
+    text-color: @blue;
+    background-color: transparent;
 }
