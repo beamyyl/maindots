@@ -1,65 +1,100 @@
 {
+    // ─── Bar geometry ──────────────────────────────────────────────────────────
     "layer": "top",
     "position": "top",
-    "height": 34,
-    "margin-top": 6,
-    "margin-left": 10,
-    "margin-right": 10,
-    "spacing": 4,
+    "height": 32,
+    "margin-top": 4,
+    "margin-left": 8,
+    "margin-right": 8,
+    "spacing": 0,
+    "exclusive": true,
 
-    "modules-left": ["custom/launcher", "sway/workspaces", "sway/window"],
-    "modules-center": [],
-    "modules-right": ["pulseaudio", "tray", "battery", "clock", "custom/exit"],
+    // ─── Module layout ─────────────────────────────────────────────────────────
+    "modules-left":   ["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right":  ["pulseaudio", "custom/sep", "battery", "custom/sep", "clock", "custom/sep", "tray", "custom/exit"],
 
+    // ─── Launcher ──────────────────────────────────────────────────────────────
     "custom/launcher": {
-        "format": "",
+        "format": "  ",
         "on-click": "rofi -show drun",
         "tooltip": false
     },
 
-    "sway/workspaces": {
+    // ─── Workspaces ────────────────────────────────────────────────────────────
+    "hyprland/workspaces": {
         "format": "{name}",
-        "on-click": "activate"
+        "on-click": "activate",
+        "sort-by-number": true,
+        "all-outputs": false,
+        "persistent-workspaces": {}
     },
 
-    "sway/window": {
-        "format": "󱂬 {title}",
-        "max-length": 30
-    },
-
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰝟",
-        "format-icons": {
-            "default": ["󰕾"]
+    // ─── Active window title ───────────────────────────────────────────────────
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "rewrite": {
+            "^$": "Desktop"
         }
     },
 
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10
+    // ─── PulseAudio / PipeWire volume ──────────────────────────────────────────
+    "pulseaudio": {
+        "format":        "{icon} {volume}%",
+        "format-muted":  "󰝟 muted",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "tooltip": false
     },
 
+    // ─── Battery ───────────────────────────────────────────────────────────────
     "battery": {
+        "bat": "BAT0",
+        "adapter": "AC",
+        "full-at": 99,
         "states": {
             "warning": 30,
-            "critical": 15
+            "critical": 10
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        "format":           "{icon} {capacity}%",
+        "format-charging":  "{icon} {capacity}%",
+        "format-plugged":   "󰂄 {capacity}%",
+        "format-full":      "󰁹 Full",
+        "format-icons":     ["󰂎", "󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+        "interval": 5,
+        "tooltip": false
     },
 
+    // ─── Clock ─────────────────────────────────────────────────────────────────
     "clock": {
-        "format": "{:%H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "interval": 1,
+        "format":     "󰥔 {:%H:%M}",
+        "format-alt": "󰃭 {:%Y-%m-%d}",
+        "on-click": "toggle-format",
+        "tooltip": false
     },
 
+    // ─── System tray ───────────────────────────────────────────────────────────
+    "tray": {
+        "spacing": 8,
+        "icon-size": 16,
+        "show-passive-items": false
+    },
+
+    // ─── Separator ─────────────────────────────────────────────────────────────
+    "custom/sep": {
+        "format": "|",
+        "tooltip": false
+    },
+
+    // ─── Exit / logout ─────────────────────────────────────────────────────────
     "custom/exit": {
-        "format": "",
-        "on-click": "swaymsg exit",
+        "format": "  ",
+        "on-click": "hyprctl dispatch exit",
         "tooltip": false
     }
 }
