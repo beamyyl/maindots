@@ -1,72 +1,220 @@
-@define-color bg #2E3440;
-@define-color light-bg #3B4252;
-@define-color accent #81A1C1;
-@define-color text #ECEFF4;
-@define-color urgent #BF616A;
+/* ─── Palette ──────────────────────────────────────────────────── */
+@define-color bg        #1a1b26;
+@define-color bg-alt    #24283b;
+@define-color fg        #c0caf5;
+@define-color primary   #7aa2f7;
+@define-color secondary #7aa2f7;
+@define-color accent    #9ece6a;
+@define-color alert     #f7768e;
+@define-color disabled  #565f89;
+@define-color magenta   #ad8ee6;
 
+/* ─── Global reset ─────────────────────────────────────────────── */
 * {
-    font-family: "Iosevka Nerd Font";
-    font-weight: bold;
-    font-size: 14px;
-    border: none;
-    min-height: 0;
+    border:        none;
+    border-radius: 0;
+    font-family:   "Iosevka Nerd Font", monospace;
+    font-size:     11px;
+    font-weight:   500;
+    min-height:    0;
+    padding:       0;
+    margin:        0;
 }
 
+/* ─── Bar window ───────────────────────────────────────────────── */
 window#waybar {
-    background: rgba(30, 34, 42, 0.7);
-    color: @text;
-    border-radius: 15px;
+    background-color: @bg;
+    color:            @fg;
+    border-radius:    12px;
+    transition:       background-color 0.3s ease;
 }
 
+/* ─── Tooltip ──────────────────────────────────────────────────── */
+tooltip {
+    background:   @bg-alt;
+    border:       1px solid @primary;
+    border-radius: 8px;
+    color:        @fg;
+}
+
+/* ─── Generic module box ───────────────────────────────────────── */
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 0 4px;
+}
+
+/* Base style shared by all module labels */
 #custom-launcher,
 #workspaces,
 #window,
-#tray,
-#battery,
 #pulseaudio,
+#battery,
 #clock,
+#tray,
+#custom-sep,
 #custom-exit {
-    background-color: @light-bg;
-    color: @text;
-    border-radius: 15px; 
-    margin: 5px 3px;
-    padding: 0px 12px;
+    padding:    2px 6px;
+    color:      @fg;
+    background: transparent;
 }
 
+/* ─── Launcher button ──────────────────────────────────────────── */
 #custom-launcher {
-    color: @accent;
-    margin-left: 10px;
+    color:        @primary;
+    font-size:    13px;
+    padding:      2px 10px 2px 8px;
+    margin-right: 2px;
+}
+
+#custom-launcher:hover {
+    color: @fg;
+}
+
+/* ─── Workspaces ───────────────────────────────────────────────── */
+#workspaces {
+    background:   @bg-alt;
+    border-radius: 8px;
+    padding:      2px 4px;
 }
 
 #workspaces button {
-    color: @text;
-    padding: 0 5px;
-    border-radius: 10px;
+    all:           unset;
+    padding:       2px 8px;
+    margin:        0 1px;
+    border-radius: 6px;
+    color:         @disabled;
+    background:    transparent;
+    transition:    all 0.2s ease;
+    border-bottom: 2px solid transparent;
 }
 
+/* occupied */
+#workspaces button.occupied {
+    color:      @fg;
+    background: @bg-alt;
+}
+
+/* active / focused */
+#workspaces button.active,
 #workspaces button.focused {
-    color: @accent;
-    background-color: rgba(129, 161, 193, 0.1);
-    border-bottom: 2px solid @accent;
+    color:         @secondary;
+    background:    @bg-alt;
+    border-bottom: 2px solid @primary;
 }
 
+/* urgent */
 #workspaces button.urgent {
-    color: @urgent;
+    background: @alert;
+    color:      @bg;
 }
 
-#battery.warning {
-    color: #EBCB8B;
+#workspaces button:hover {
+    background: @bg;
+    color:      @fg;
 }
 
-#battery.critical {
-    color: @urgent;
+/* ─── Window title ─────────────────────────────────────────────── */
+#window {
+    color: @fg;
+}
+
+#window.empty {
+    color: @disabled;
+}
+
+/* ─── PulseAudio ───────────────────────────────────────────────── */
+#pulseaudio {
+    color: @fg;
+}
+
+#pulseaudio .format-icons {
+    color: @secondary;
 }
 
 #pulseaudio.muted {
-    color: #4C566A;
+    color: @disabled;
 }
 
+/* ─── Battery ──────────────────────────────────────────────────── */
+#battery {
+    color: @accent;
+}
+
+#battery.charging {
+    color: @magenta;
+
+    /* replicate polybar animation-charging feel with CSS animation */
+    animation-name:     battery-charging;
+    animation-duration: 2.25s;        /* 3 frames × 750 ms */
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes battery-charging {
+    0%   { color: @magenta; }
+    33%  { color: @primary; }
+    66%  { color: @accent;  }
+    100% { color: @magenta; }
+}
+
+#battery.warning {
+    color: @alert;
+}
+
+#battery.critical {
+    color: @alert;
+    animation-name:     battery-critical;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes battery-critical {
+    from { color: @alert; }
+    to   { color: @bg;    }
+}
+
+#battery.full {
+    color: @accent;
+}
+
+/* ─── Clock ────────────────────────────────────────────────────── */
+#clock {
+    color: @primary;
+}
+
+/* ─── Tray ─────────────────────────────────────────────────────── */
+#tray {
+    padding: 2px 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @alert;
+    border-radius:    4px;
+}
+
+/* ─── Separator ────────────────────────────────────────────────── */
+#custom-sep {
+    color:   @disabled;
+    padding: 2px 4px;
+}
+
+/* ─── Exit button ──────────────────────────────────────────────── */
 #custom-exit {
-    margin-right: 10px;
-    color: @urgent;
+    color:       @alert;
+    font-size:   13px;
+    padding:     2px 8px 2px 6px;
+    margin-left: 2px;
+}
+
+#custom-exit:hover {
+    color: @bg;
+    background: @alert;
+    border-radius: 6px;
 }
