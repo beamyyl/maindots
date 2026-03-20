@@ -14,7 +14,7 @@
     border:        none;
     border-radius: 0;
     font-family:   "Iosevka Nerd Font", monospace;
-    font-size:     11px;
+    font-size:     14px;
     font-weight:   500;
     min-height:    0;
     padding:       0;
@@ -55,21 +55,20 @@ tooltip {
 #custom-sep,
 #custom-exit {
     padding:    2px 6px;
-    color:      @fg;
     background: transparent;
 }
 
 /* ─── Launcher button ──────────────────────────────────────────── */
 #custom-launcher {
     color:        @primary;
-    font-size:    13px;
+    font-size:    16px;
     padding:      2px 10px 2px 8px;
     margin-right: 2px;
 }
 
-#custom-launcher:hover {
-    color: @fg;
-}
+#custom-launcher * { color: @primary; font-size: 16px; }
+#custom-launcher:hover { color: @fg; }
+#custom-launcher:hover * { color: @fg; }
 
 /* ─── Workspaces ───────────────────────────────────────────────── */
 #workspaces {
@@ -89,8 +88,9 @@ tooltip {
     border-bottom: 2px solid transparent;
 }
 
-/* occupied */
-#workspaces button.occupied {
+/* occupied / nonempty */
+#workspaces button.occupied,
+#workspaces button.nonempty {
     color:      @fg;
     background: @bg-alt;
 }
@@ -152,10 +152,10 @@ tooltip {
 }
 
 @keyframes battery-charging {
-    0%   { color: @magenta; }
-    33%  { color: @primary; }
-    66%  { color: @accent;  }
-    100% { color: @magenta; }
+    0%   { color: #ad8ee6; }
+    33%  { color: #7aa2f7; }
+    66%  { color: #9ece6a; }
+    100% { color: #ad8ee6; }
 }
 
 #battery.warning {
@@ -171,8 +171,8 @@ tooltip {
 }
 
 @keyframes battery-critical {
-    from { color: @alert; }
-    to   { color: @bg;    }
+    from { color: #f7768e; }
+    to   { color: #1a1b26; }
 }
 
 #battery.full {
@@ -208,13 +208,29 @@ tooltip {
 /* ─── Exit button ──────────────────────────────────────────────── */
 #custom-exit {
     color:       @alert;
-    font-size:   13px;
+    font-size:   16px;
     padding:     2px 8px 2px 6px;
     margin-left: 2px;
 }
 
-#custom-exit:hover {
-    color: @bg;
-    background: @alert;
-    border-radius: 6px;
+#custom-exit * { color: @alert; font-size: 16px; }
+#custom-exit:hover { background: @alert; border-radius: 6px; }
+#custom-exit:hover * { color: @bg; }
+
+/* ─── Workspace window dots ────────────────────────────────────── */
+#workspaces button .num-windows {
+    font-size:   8px;
+    color:       @disabled;
+    margin-left: 3px;
+    padding:     0;
+}
+
+#workspaces button.nonempty .num-windows,
+#workspaces button.occupied .num-windows {
+    color: @accent;
+}
+
+#workspaces button.active .num-windows,
+#workspaces button.focused .num-windows {
+    color: @primary;
 }
