@@ -1,1 +1,1 @@
-i3 polybar xorg picom xclip dunst libnotify i3status i3lock brightnessctl xwallpaper i3blocks dmenu hyprland rofi waybar hyprpaper alacritty hyprshot pcmanfm ttf-iosevka-nerd alacritty picom kitty neovim rofi btop dunst libnotify fastfetch mango qs-noctalia
+i3 polybar xorg picom xclip dunst libnotify i3status i3lock brightnessctl xwallpaper i3blocks dmenu hyprland rofi waybar hyprpaper alacritty hyprshot pcmanfm ttf-iosevka-nerd alacritty picom kitty neovim rofi btop dunst libnotify fastfetch mango qs-noctalia slurp xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
