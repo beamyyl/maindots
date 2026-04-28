@@ -5,7 +5,7 @@ prefer-no-csd
 output "eDP-1" {
     mode "1920x1080@144.000"
     position x=0 y=0
-    scale 1.0
+    scale 1.25
 }
 workspace "1" { open-on-output "eDP-1"; }
 workspace "2" { open-on-output "eDP-1"; }
@@ -16,7 +16,6 @@ workspace "6" { open-on-output "eDP-1"; }
 workspace "7" { open-on-output "eDP-1"; }
 workspace "8" { open-on-output "eDP-1"; }
 workspace "9" { open-on-output "eDP-1"; }
-workspace "10" { open-on-output "eDP-1"; }
 
 
 // ========================
@@ -78,6 +77,24 @@ layer-rule {
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
+    opacity 1.0
+    background-effect {
+        blur true
+    }
+}
+window-rule {
+    match app-id="^(pcmanfm)$"
+    opacity 0.9
+    background-effect {
+        blur true
+    }
+}
+layer-rule {
+    match namespace="^rofi$"
+    opacity 0.9
+    background-effect {
+        blur true
+    }
 }
 
 // ========================
@@ -90,7 +107,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // ========================
 binds {
     Super+Return { spawn "alacritty"; }
-    Ctrl+Alt+T    { spawn "alacritty"; }
+    Ctrl+Alt+T    { spawn "st"; }
     Super+E       { spawn "pcmanfm"; }
     Super+R       { spawn "rofi" "-show" "drun"; }
     
