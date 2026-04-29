@@ -125,6 +125,7 @@ binds {
     Super+Shift+Up    { move-window-up; }
     Super+Shift+Down  { move-window-down; }
 
+    Mod+W { switch-preset-column-width; }
     Super+F { fullscreen-window; }
     Super+T { toggle-window-floating; }
     Alt+F4  { close-window; }
