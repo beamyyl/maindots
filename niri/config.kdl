@@ -28,6 +28,7 @@ spawn-at-startup "nm-applet" "--indicator"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "systemctl" "--user" "stop" "xdg-desktop-portal" "xdg-desktop-portal-gnome" "xdg-desktop-portal-gtk"
 spawn-at-startup "systemctl" "--user" "start" "xdg-desktop-portal"
+spawn-at-startup "xwayland-satellite"
 
 // ========================
 // INPUT
