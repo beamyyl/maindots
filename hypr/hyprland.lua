@@ -2,12 +2,11 @@
 -- MONITORS
 -- ──────────────────────────────────────────────────────────────────
 
--- monitor = eDP-1, 1920x1080@144, 0x0, 1.25
 hl.monitor({
-    output   = "eDP-1",
-    mode     = "1920x1080@144",
+    output   = "DP-2",
+    mode     = "1920x1080@180",
     position = "0x0",
-    scale    = "1.25",
+    scale    = "1",
 })
 
 -- ──────────────────────────────────────────────────────────────────
@@ -52,7 +51,7 @@ hl.config({
             inactive_border = "rgba(24283bff)",
         },
         resize_on_border = true,
-        layout           = "dwindle",
+        layout           = "master",
     },
 
     dwindle = {
