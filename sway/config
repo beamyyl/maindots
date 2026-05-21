@@ -1,0 +1,162 @@
+### Variables for settings ###
+set $mod                Mod4
+set $amod               Mod1
+set $smod               Shift
+set $wm_setting_font    pango:Iosevka Nerd Font Mono, Semibold 11
+
+output DP-2 mode 1920x1080@180Hz
+set $wm_setting_gap_width     5
+set $wm_setting_gap_heigth    5
+
+set $wm_setting_border_size   2
+set $wm_setting_key_left      Left
+set $wm_setting_key_down      Down
+set $wm_setting_key_up        Up
+set $wm_setting_key_right     Right
+
+### Application Variables ###
+set $wm_setting_app_terminal  foot
+set $wm_setting_app_launcher  rofi -show drun
+set $wm_setting_app_files     pcmanfm
+
+set $wm_color_border_active_bg        #7aa2f7
+set $wm_color_border_active_fg        #1a1b26
+set $wm_color_border_inactive_bg      #24283b
+set $wm_color_border_inactive_fg      #c0caf5
+set $wm_color_background              #1a1b26
+
+### SwayFX Visuals ###
+corner_radius 4
+shadows on
+blur on
+
+# Transparency
+for_window [tiling] opacity 1.0
+for_window [floating] opacity 1.0
+default_dim_inactive 0.10
+
+### Fix for app startup delay ###
+exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec /usr/lib/xdg-desktop-portal-gtk &
+
+### Autostart & Hardware Settings ###
+exec qs -c noctalia-shell
+exec gentoo-pipewire-launcher restart
+exec swaybg -i walls/wall1.jpg -m fill
+exec $HOME/.local/bin/stacki3
+# also ofc, this ^ requires pipx install stacki3 and pipx ensurepath
+
+# Input settings
+input "type:keyboard" {
+    repeat_delay 360
+    repeat_rate 25
+}
+input "type:pointer" {
+    accel_profile "flat"
+    pointer_accel 0
+}
+
+### Applications ###
+bindsym Control+$amod+t exec $wm_setting_app_terminal
+bindsym $mod+e exec $wm_setting_app_files
+bindsym $mod+r exec $wm_setting_app_launcher
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
+
+### Workspaces ###
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+$smod+1 move container to workspace $ws1
+bindsym $mod+$smod+2 move container to workspace $ws2
+bindsym $mod+$smod+3 move container to workspace $ws3
+bindsym $mod+$smod+4 move container to workspace $ws4
+bindsym $mod+$smod+5 move container to workspace $ws5
+bindsym $mod+$smod+6 move container to workspace $ws6
+bindsym $mod+$smod+7 move container to workspace $ws7
+bindsym $mod+$smod+8 move container to workspace $ws8
+bindsym $mod+$smod+9 move container to workspace $ws9
+bindsym $mod+$smod+0 move container to workspace $ws10
+
+### Audio
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
+
+### Brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+### Window sizes and positions ###
+bindsym $mod+$wm_setting_key_left        focus left
+bindsym $mod+$wm_setting_key_down        focus down
+bindsym $mod+$wm_setting_key_up          focus up
+bindsym $mod+$wm_setting_key_right       focus right
+bindsym $amod+Tab focus next
+bindsym $amod+F4 kill
+
+bindsym $mod+$smod+$wm_setting_key_left  move left
+bindsym $mod+$smod+$wm_setting_key_down  move down
+bindsym $mod+$smod+$wm_setting_key_up    move up
+bindsym $mod+$smod+$wm_setting_key_right move right
+
+mode "resize" {
+    bindsym $wm_setting_key_left  resize shrink width 10 px or 10 ppt
+    bindsym $wm_setting_key_up    resize grow height 10 px or 10 ppt
+    bindsym $wm_setting_key_down  resize shrink height 10 px or 10 ppt
+    bindsym $wm_setting_key_right resize grow width 10 px or 10 ppt
+    
+    bindsym $smod+$wm_setting_key_left  gaps horizontal minus 5
+    bindsym $smod+$wm_setting_key_down  gaps horizontal plus 5
+    bindsym $smod+$wm_setting_key_up    gaps vertical minus 5
+    bindsym $smod+$wm_setting_key_right gaps vertical plus 5
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+$smod+r mode "resize"
+
+### Gaps ###
+gaps inner $wm_setting_gap_width
+gaps outer $wm_setting_gap_heigth
+
+### Borders ###
+default_border pixel $wm_setting_border_size
+default_floating_border pixel $wm_setting_border_size
+
+### Colors ###
+client.focused          $wm_color_border_active_bg   $wm_color_border_active_bg   $wm_color_border_active_fg   $wm_color_border_active_bg
+client.focused_inactive $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg
+client.unfocused        $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg
+client.urgent           #f7768e                      #f7768e                      #1a1b26                      #f7768e
+client.placeholder      $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg
+client.background       $wm_color_background
+
+### Miscellaneous settings ###
+font $wm_setting_font
+floating_modifier $mod
+bindsym $mod+f fullscreen toggle
+bindsym $mod+t floating toggle
+bindsym $mod+$smod+q kill
+
+bindsym $mod+Shift+s reload
+bindsym $mod+Shift+e exec swaymsg exit
