@@ -69,7 +69,7 @@ hl.config({
 hl.config({
     general = {
         gaps_in = 3,
-        gaps_out = 5,
+        gaps_out = 8,
         border_size = 2,
         col = {
             active_border = "rgba(7aa2f7ff)",
