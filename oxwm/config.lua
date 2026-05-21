@@ -3,7 +3,7 @@
 
 local modkey = "Mod4"
 local altkey = "Mod1"
-local terminal = "alacritty"
+local terminal = "st"
 local launcher = "rofi -show drun"
 local filemanager = "pcmanfm"
 
@@ -13,6 +13,7 @@ local colors = {
     bg = "#1a1b26",
     active_bg = "#7aa2f7",
     active_fg = "#c0caf5",
+    light_blue = "#7aa2f7",
     inactive_bg = "#24283b",
     inactive_fg = "#c0caf5",
     urgent = "#f7768e"
@@ -38,13 +39,14 @@ oxwm.set_layout_symbol("tabbed","[=]")
 oxwm.bar.set_font("Iosevka Nerd Font:style=Bold:size=12")
 
 local blocks = {
+        oxwm.bar.block.systray(),
     oxwm.bar.block.shell({
-    format = "󰕾 {}",
-    command = "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf \"%d%%\\n\", $2 * 100}'",
-    interval = 1,
-    color = "#c0caf5",
-    underline = false,
-}),
+        format = " {}",
+        command = "wpctl get-volume @DEFAULT_SINK@ | awk '{if ($NF==\"[MUTED]\") print \"󰝟 muted\"; else { v=$2*100; if (v<30) printf \"󰕿 %d%%\", v; else if (v<70) printf \"󰖀 %d%%\", v; else printf \"󰕾 %d%%\", v}}'",
+        interval = 1,
+        color = "#c0caf5",
+        underline = false,
+    }),
     oxwm.bar.block.static({
         text = "│",
         interval = 999999999,
@@ -58,10 +60,17 @@ local blocks = {
         full = "󰁹 {}%",
         interval = 30,
         color = "#c0caf5",
-        underline = false,
-    }),
-    oxwm.bar.block.static({
-        text = "│",
+       underline = false,
+    }), 
+ -- This one is for custom battery prompts. FIRST MAKE SURE TO RUN 'chmod +x ~/.config/oxwm/battery.sh' !!!! 
+ --  oxwm.bar.block.shell({
+ --   format = "{}",
+ --   command = "~/.config/oxwm/battery.sh",
+ --   interval = 5,
+ --   color = "#c0caf5",
+ --   }),
+   oxwm.bar.block.static({
+       text = "│",
         interval = 999999999,
         color = "#7a8ba8",
         underline = false,
@@ -78,9 +87,9 @@ local blocks = {
 oxwm.bar.set_blocks(blocks)
 
 oxwm.bar.set_scheme_normal(colors.inactive_fg, colors.bg, colors.inactive_bg)
-oxwm.bar.set_scheme_occupied(colors.active_fg, colors.bg, colors.active_bg)
-oxwm.bar.set_scheme_selected(colors.active_fg, colors.active_bg, colors.active_bg)
-oxwm.bar.set_scheme_urgent(colors.urgent, colors.bg, colors.urgent)
+oxwm.bar.set_scheme_occupied(colors.light_blue, colors.bg, colors.active_bg)
+oxwm.bar.set_scheme_selected(colors.light_blue, colors.active_bg, colors.active_bg)
+oxwm.bar.set_scheme_urgent(colors.urgent, colors.inactive_bg, colors.urgent)
 
 oxwm.key.bind({"Control",altkey},"T", oxwm.spawn_terminal())
 oxwm.key.bind({ modkey }, "N", oxwm.layout.cycle())
