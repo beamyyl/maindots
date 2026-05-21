@@ -1,1 +1,2 @@
-i3 polybar xorg picom xclip dunst libnotify i3status i3lock brightnessctl xwallpaper i3blocks dmenu hyprland rofi waybar hyprpaper alacritty hyprshot pcmanfm ttf-iosevka-nerd alacritty picom kitty neovim rofi btop dunst libnotify fastfetch mango qs-noctalia slurp xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+hey
+this is MOST of my newest dots, but also check my repos for 100% updated dots
