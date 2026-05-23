@@ -2,7 +2,7 @@
 -- MONITORS
 -- ──────────────────────────────────────────────────────────────────
 -- monitor = DP-2, 1920x1080@180, 0x0, 1
-hl.monitor({ name = "eDP-1", mode = "1920x1080@144", position = "0x0", scale = 1.2 })
+hl.monitor({ output = "eDP-1", mode = "1920x1080@144", position = "0x0", scale = 1.2 })
 
 -- ──────────────────────────────────────────────────────────────────
 -- AUTOSTART
@@ -78,13 +78,17 @@ hl.config({
         resize_on_border = true,
         layout = "master",
     },
-    dwindle = { pseudotile = false, preserve_split = true },
     misc = {
         disable_hyprland_logo = true,
         disable_splash_rendering = true,
         focus_on_activate = true,
         animate_manual_resizes = true,
     },
+})
+hl.config({
+    dwindle = {
+        force_split = 0,
+    }
 })
 
 -- ──────────────────────────────────────────────────────────────────
@@ -126,7 +130,7 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"))
 -- Session
 hl.bind("ALT + F4", hl.dsp.window.close())
 hl.bind(mod .. " + SHIFT + E", hl.dsp.exit())
-hl.bind(mod .. " + SHIFT + S", hl.dsp.reload())
+hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- ──────────────────────────────────────────────────────────────────
 -- WINDOW MANAGEMENT
@@ -139,7 +143,7 @@ hl.bind(mod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }))
 hl.bind(mod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
 hl.bind(mod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
 hl.bind(mod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
-hl.bind("ALT + Tab", hl.dsp.cyclenext())
+hl.bind("ALT + Tab", hl.dsp.window.cycle_next())
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = 0 }))
 hl.bind(mod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 
@@ -149,5 +153,5 @@ for i = 0, 9 do
     hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i == 0 and 10 or i }))
 end
 
-hl.bindm(mod .. " + mouse:272", hl.dsp.window.drag())
-hl.bindm(mod .. " + mouse:273", hl.dsp.window.resize())
+hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
