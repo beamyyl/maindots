@@ -3,6 +3,8 @@
 -- ──────────────────────────────────────────────────────────────────
 -- monitor = DP-2, 1920x1080@180, 0x0, 1
 hl.monitor({ output = "eDP-1", mode = "1920x1080@144", position = "0x0", scale = 1.2 })
+hl.monitor({ output = "HDMI-A-1", mode = "1280x1024@75", position = "-1280x0", scale = 1 })
+hl.monitor({ output = "WAYLAND-1", disabled = true })
 
 -- ──────────────────────────────────────────────────────────────────
 -- AUTOSTART
@@ -147,15 +149,10 @@ hl.bind("ALT + Tab", hl.dsp.window.cycle_next())
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = 0 }))
 hl.bind(mod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 
-for i = 0, 9 do
-    local key = tostring(i)
-    -- Calculate the correct target workspace number (1-10)
-    local ws_num = (i == 0 and 10 or i)
-    -- Convert it to a string identifier so it can dynamically spawn on any active monitor
-    local ws_id = tostring(ws_num)
-
-    hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = ws_id }))
-    hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = ws_id }))
+for i = 1, 10 do
+    local key = i % 10 
+    hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+    hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
