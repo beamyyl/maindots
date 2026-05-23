@@ -149,8 +149,13 @@ hl.bind(mod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 
 for i = 0, 9 do
     local key = tostring(i)
-    hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = i == 0 and 10 or i }))
-    hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i == 0 and 10 or i }))
+    -- Calculate the correct target workspace number (1-10)
+    local ws_num = (i == 0 and 10 or i)
+    -- Convert it to a string identifier so it can dynamically spawn on any active monitor
+    local ws_id = tostring(ws_num)
+
+    hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = ws_id }))
+    hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = ws_id }))
 end
 
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
