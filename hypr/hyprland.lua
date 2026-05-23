@@ -1,7 +1,7 @@
 -- ──────────────────────────────────────────────────────────────────
 -- MONITORS
 -- ──────────────────────────────────────────────────────────────────
--- monitor = DP-2, 1920x1080@180, 0x0, 1
+-- hl.monitor({ output = "DP-2", mode = "1920x1080@180", position = "0x0", scale = 1 })
 hl.monitor({ output = "eDP-1", mode = "1920x1080@144", position = "0x200", scale = 1.2 })
 hl.monitor({ output = "HDMI-A-1", mode = "1280x1024@75", position = "-1280x0", scale = 1 })
 hl.monitor({ output = "WAYLAND-1", disabled = true })
