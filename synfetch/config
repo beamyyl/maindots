@@ -1,0 +1,58 @@
+# Available themes: synthwave (default), monochrome, minimal, dracula, nord, catppuccin, tokyonight, gruvbox, custom, automatic
+# Available distros: arch, cachyos, ubuntu, debian, devuan, fedora, linuxmint, zorinos, popos, manjaro, opensuse, slackware, centos, redhat, mxlinux, guix, qubesos, antix, garuda, nobara, bazzite, kali, elementaryos, kdeneon, deepin, alpine, gobo, lfs, gentoo, endeavouros, artix, void, bedrock, bodhi, nixos, blackarch, arco, archcraft, puppy, parrotos, peppermint, parabola, steamos, tails, pikaos, chimera, macos
+
+# Set theme to "automatic", if you use pywal, matugen or any color scheme generator
+# Set theme to "custom" to use the hex colors below
+THEME="tokyonight"
+
+# Custom hex colors 
+C1_HEX="#ff5555"            # ASCII Art
+OS_HEX="#ffb86c"            # OS
+KERNEL_HEX="#f1fa8c"        # Kernel
+USER_HEX="#50fa7b"          # User
+HOST_HEX="#8be9fd"          # Hostname
+MOBO_HEX="#bd93f9"          # Motherboard
+CPU_HEX="#ff79c6"           # CPU
+GPU_HEX="#ff5555"           # GPU
+UPTIME_HEX="#ffb86c"        # Uptime
+SHELL_HEX="#f1fa8c"         # Shell
+DEWM_HEX="#50fa7b"          # DE/WM
+PKGS_HEX="#8be9fd"          # Packages
+BAR_LABEL_HEX="#bd93f9"     # Bar label
+BAR_FILLED1_HEX="#ff79c6"   # Filled bar 1
+BAR_FILLED2_HEX="#ff5555"   # Filled bar 2
+BAR_EMPTY_HEX="#282a36"     # Empty bar
+SEPARATOR_HEX="#444b6a"     # Separator
+
+# Show/Hide modules
+SHOW_OS=true
+SHOW_KERNEL=true
+SHOW_USER=true
+SHOW_HOST=true
+#SHOW_MOBO=true
+SHOW_CPU=true
+SHOW_GPU=true
+SHOW_UPTIME=true
+#SHOW_SHELL=true
+SHOW_DEWM=true
+SHOW_PKGS=true
+SHOW_USAGE_BARS=true
+
+# Show/Hide all modules except the ASCII text
+HIDE_INFO=false
+
+# Toggle ASCII
+USE_ASCII=true
+
+# Toggle icons
+USE_NERD_FONTS=true
+
+# Use a different distro ASCII art (leave empty for default distro)
+CUSTOM_DISTRO="" 
+
+# Custom ASCII text rendered in small slant font (leave empty to use distro logo)
+# Requires figlet. Example: CUSTOM_TEXT="hello"
+CUSTOM_TEXT=""
+
+# Toggle Live mode on startup
+LIVE_MODE=false
