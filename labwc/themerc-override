@@ -1,0 +1,16 @@
+window.active.title.bg.color: #24283b
+window.inactive.title.bg.color: #16161e
+
+window.active.border.color: #7aa2f7
+window.inactive.border.color: #1a1b26
+
+window.active.label.text.color: #a9b1d6
+window.inactive.label.text.color: #565f89
+
+window.active.button.unpressed.image.color: #a9b1d6
+window.inactive.button.unpressed.image.color: #565f89
+window.active.button.hover.image.color: #bb9af7
+
+window.label.text.justify: left
+border.width: 2
+padding.width: 4

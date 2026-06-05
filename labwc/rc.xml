@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<labwc_config>
+
+  <keyboard>
+    <chainQuitKey>C-g</chainQuitKey>
+
+    <keybind key="A-Tab">
+      <action name="NextWindow" />
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow" />
+    </keybind>
+
+    <keybind key="C-A-t">
+      <action name="Execute" command="alacritty" />
+    </keybind>
+
+    <keybind key="W-r">
+      <action name="Execute" command="rofi -show drun" />
+    </keybind>
+
+    <keybind key="W-e">
+      <action name="Execute" command="pcmanfm" />
+    </keybind>
+
+    <keybind key="W-S-e">
+      <action name="Exit" />
+    </keybind>
+
+
+    <keybind key="A-F4">
+      <action name="Close" />
+    </keybind>
+
+    <keybind key="Print">
+      <action name="Execute" command='sh -c "grim -g \"$(slurp)\" - | wl-copy"' />
+    </keybind>
+
+    <keybind key="W-S-s">
+      <action name="Reconfigure" />
+    </keybind>
+
+    <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind>
+    <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind>
+    <keybind key="W-3"><action name="GoToDesktop" to="3" /></keybind>
+    <keybind key="W-4"><action name="GoToDesktop" to="4" /></keybind>
+    <keybind key="W-S-1"><action name="SendToDesktop" to="1" /></keybind>
+    <keybind key="W-S-2"><action name="SendToDesktop" to="2" /></keybind>
+    <keybind key="W-S-3"><action name="SendToDesktop" to="3" /></keybind>
+    <keybind key="W-S-4"><action name="SendToDesktop" to="4" /></keybind>
+
+  </keyboard>
+
+  <libinput>
+    <device category="default">
+      <accelProfile>flat</accelProfile>
+    </device>
+  </libinput>
+
+  <desktops number="4" />
+
+</labwc_config>
+

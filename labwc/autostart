@@ -1,0 +1,4 @@
+noctalia-shell &
+wlr-randr --output eDP-1 --mode 1280x720@143.981 && wlr-randr --output HDMI-A-1 --mode 1280x1024@75.025
+wlr-randr --output HDMI-A-1 --pos -1280,-500
+wlr-randr --output eDP-1 --pos 0,0
