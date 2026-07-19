@@ -10,9 +10,18 @@
     "exclusive": true,
 
     // ─── Module layout ─────────────────────────────────────────────────────────
-    "modules-left":   ["custom/launcher", "hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right":  ["pulseaudio", "custom/sep", "battery", "custom/sep", "clock", "custom/sep", "tray", "custom/exit"],
+    "modules-left": ["custom/launcher", "sway/workspaces"],
+    "modules-center": ["sway/window"],
+    "modules-right": [
+        "custom/audio",
+        "custom/sep",
+        "battery",
+        "custom/sep",
+        "clock",
+        "custom/sep",
+        "tray",
+        "custom/exit"
+    ],
 
     // ─── Launcher ──────────────────────────────────────────────────────────────
     "custom/launcher": {
@@ -22,7 +31,7 @@
     },
 
     // ─── Workspaces ────────────────────────────────────────────────────────────
-    "hyprland/workspaces": {
+    "sway/workspaces": {
         "format": "{name}",
         "on-click": "activate",
         "sort-by-number": true,
@@ -31,7 +40,7 @@
     },
 
     // ─── Active window title ───────────────────────────────────────────────────
-    "hyprland/window": {
+    "sway/window": {
         "format": "{title}",
         "max-length": 40,
         "separate-outputs": true,
@@ -40,31 +49,38 @@
         }
     },
 
-    // ─── PulseAudio / PipeWire volume ──────────────────────────────────────────
-    "pulseaudio": {
-        "format":        "{icon} {volume}%",
-        "format-muted":  "󰝟 muted",
-        "format-icons": {
-            "default": ["󰕿", "󰖀", "󰕾"]
-        },
-        "on-click": "pavucontrol",
+    // ─── Custom PipeWire audio (wpctl) ─────────────────────────────────────────
+    "custom/audio": {
+        "exec": "~/.config/waybar/scripts/audio.sh",
+        "interval": 1,
+        "return-type": "json",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
         "tooltip": false
     },
 
     // ─── Battery ───────────────────────────────────────────────────────────────
     "battery": {
-        "bat": "BAT0",
+        "bat": "BAT1",
         "adapter": "AC",
         "full-at": 99,
         "states": {
             "warning": 30,
             "critical": 10
         },
-        "format":           "{icon} {capacity}%",
-        "format-charging":  "{icon} {capacity}%",
-        "format-plugged":   "󰂄 {capacity}%",
-        "format-full":      "󰁹 Full",
-        "format-icons":     ["󰂎", "󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-full": "󰁹 Full",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰁹"
+        ],
         "interval": 5,
         "tooltip": false
     },
@@ -72,7 +88,7 @@
     // ─── Clock ─────────────────────────────────────────────────────────────────
     "clock": {
         "interval": 1,
-        "format":     "󰥔 {:%H:%M}",
+        "format": "󰥔 {:%H:%M}",
         "format-alt": "󰃭 {:%Y-%m-%d}",
         "on-click": "toggle-format",
         "tooltip": false
@@ -91,7 +107,7 @@
         "tooltip": false
     },
 
-    // ─── Exit / logout ─────────────────────────────────────────────────────────
+    // ─── Exit ──────────────────────────────────────────────────────────────────
     "custom/exit": {
         "format": " ",
         "on-click": "hyprctl dispatch exit",
