@@ -61,9 +61,10 @@
             "keyColor": "35"
         },
         {
-          "type": "initsystem",
-          "key": "├─",
-//          "format": "openrc 0.63.3" 
+            "type": "initsystem",
+            "key": "├─",
+            "keyColor": "35"
+//            "format": "openrc 0.63.3" 
         },
         {
             "type": "shell",
