@@ -10,7 +10,26 @@
   },
 
   "display": {
-    "separator": ""
+    "separator": "",
+    "bar": {
+      "char": {
+        "elapsed": "■",
+        "total": "-"
+      },
+      "border": {
+        "left": "|",
+        "right": "|"
+      },
+      "width": 14,
+      "color": {
+        "elapsed": "white",
+        "total": "white",
+        "border": "white"
+      }
+    },
+    "percent": {
+      "type": 6
+    }
   },
 
   "modules": [
@@ -43,13 +62,13 @@
       "type": "disk",
       "key": "{#90}│ {#96} Disk      {#90}",
       "folders": "/",
-      "format": "  {size-used} / {size-total} ({size-percentage})"
+      "format": "  {size-percentage-bar} {size-used} / {size-total}"
     },
 
     {
       "type": "memory",
       "key": "{#90}│ {#96}󰍛 Memory    {#90}",
-      "format": "  {used} / {total} ({percentage})"
+      "format": "  {percentage-bar} {used} / {total}"
     },
 
     {
