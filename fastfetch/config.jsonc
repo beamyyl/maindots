@@ -42,20 +42,20 @@
     {
       "type": "title",
       "key": "{#90}│ {#96} User      {#90}",
-      "format": "  {user-name}  {#2}[{home-dir}]"
+      "format": "  {user-name} {#2}[{home-dir}]"
     },
 
     {
       "type": "cpu",
       "key": "{#90}│ {#96} CPU       {#90}",
       "showPeCoreCount": true,
-      "format": "  {name}  {#2}[{core-types}] [{freq-max}]"
+      "format": "  {name} {#2}[{core-types}] [{freq-max}]"
     },
 
     {
       "type": "gpu",
       "key": "{#90}│ {#96}󰍛 GPU       {#90}",
-      "format": "  {vendor} {name}  {#2}[{type}]"
+      "format": "  {vendor} {name} {#2}[{type}]"
     },
 
     {
@@ -74,13 +74,13 @@
     {
       "type": "os",
       "key": "{#90}│ {#95} OS        {#90}",
-      "format": "  {pretty-name}  {#2}[{arch}]"
+      "format": "  {pretty-name} {#2}[{arch}]"
     },
 
     {
       "type": "kernel",
       "key": "{#90}│ {#95} Kernel    {#90}",
-      "format": "  {sysname}  {#2}[v{release}]"
+      "format": "  {sysname} {#2}[v{release}]"
     },
 
     {
@@ -91,13 +91,13 @@
     {
       "type": "initsystem",
       "key": "{#90}│ {#95} Init      {#90}",
-      "format": "  {name}  {#2}[{version}]"
+      "format": "  {name} {#2}[{version}]"
     },
 
     {
       "type": "shell",
       "key": "{#90}│ {#95} Shell     {#90}",
-      "format": "  {pretty-name}  {#2}[v{version}]"
+      "format": "  {pretty-name} {#2}[v{version}]"
     },
 
     {
@@ -128,7 +128,7 @@
     {
       "type": "terminal",
       "key": "{#90}│ {#94} Terminal  {#90}",
-      "format": "  {pretty-name}  {#2}[{version}]"
+      "format": "  {pretty-name} {#2}[{version}]"
     },
 
     {
