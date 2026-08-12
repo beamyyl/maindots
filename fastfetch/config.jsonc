@@ -85,7 +85,7 @@
     {
       "type": "uptime",
       "key": "{#90}│ {#94}󰅐 Uptime    {#90}",
-      "format": "  {?days}{days} Days + {?}{hours}:{minutes}:{seconds}"
+      "format": "  {?days}{days} Days + {?}{hours} hour, {minutes} mins"
     },
 
     {
