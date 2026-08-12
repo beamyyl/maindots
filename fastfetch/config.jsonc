@@ -55,7 +55,7 @@
     {
       "type": "gpu",
       "key": "{#90}│ {#96}󰍛 GPU       {#90}",
-      "format": "  {name}  {#2}[{type}]"
+      "format": "  {vendor} {name}  {#2}[{type}]"
     },
 
     {
@@ -85,8 +85,7 @@
 
     {
       "type": "packages",
-      "key": "{#90}│ {#95}󰏖 Packages  {#90}",
-      "format": "  {all}"
+      "key": "{#90}│ {#95}󰏖 Packages    {#90}"
     },
 
     {
