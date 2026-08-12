@@ -17,99 +17,99 @@
     {
       "type": "custom",
       "key": "{#90}╭ Keys ───────",
-      "format":  "{#90}│ Values ───────────────────────╮"
+      "format": "{#90}│ Values ───────────────────────╮"
     },
 
     {
       "type": "title",
-      "key": "{#90}│ {#96}User       {#90} ",
+      "key": "{#90}│ {#96} User      {#90}",
       "format": "  {user-name}  {#2}[{home-dir}]"
     },
 
     {
       "type": "cpu",
-      "key": "{#90}│ {#96}CPU        {#90} ",
+      "key": "{#90}│ {#96} CPU       {#90}",
       "showPeCoreCount": true,
       "format": "  {name}  {#2}[{core-types}] [{freq-max}]"
     },
 
     {
       "type": "gpu",
-      "key": "{#90}│ {#96}GPU        {#90} ",
+      "key": "{#90}│ {#96}󰍛 GPU       {#90}",
       "format": "  {name}  {#2}[{type}]"
     },
 
     {
       "type": "disk",
-      "key": "{#90}│ {#96}Disk       {#90} ",
+      "key": "{#90}│ {#96} Disk      {#90}",
       "folders": "/",
       "format": "  {size-used} / {size-total} ({size-percentage})"
     },
 
     {
       "type": "memory",
-      "key": "{#90}│ {#96}Memory     {#90} ",
+      "key": "{#90}│ {#96}󰍛 Memory    {#90}",
       "format": "  {used} / {total} ({percentage})"
     },
 
     {
       "type": "os",
-      "key": "{#90}│ {#95}OS         {#90} ",
+      "key": "{#90}│ {#95} OS        {#90}",
       "format": "  {pretty-name}  {#2}[{arch}]"
     },
 
     {
       "type": "kernel",
-      "key": "{#90}│ {#95}Kernel     {#90} ",
+      "key": "{#90}│ {#95} Kernel    {#90}",
       "format": "  {sysname}  {#2}[v{release}]"
     },
 
     {
       "type": "packages",
-      "key": "{#90}│ {#95}Packages   {#90} ",
+      "key": "{#90}│ {#95}󰏖 Packages  {#90}",
       "format": "  {all}"
     },
 
     {
       "type": "initsystem",
-      "key": "{#90}│ {#95}Init       {#90} ",
+      "key": "{#90}│ {#95} Init      {#90}",
       "format": "  {name}  {#2}[{version}]"
     },
 
     {
       "type": "shell",
-      "key": "{#90}│ {#95}Shell      {#90} ",
+      "key": "{#90}│ {#95} Shell     {#90}",
       "format": "  {pretty-name}  {#2}[v{version}]"
     },
 
     {
       "type": "uptime",
-      "key": "{#90}│ {#94}Uptime     {#90} ",
+      "key": "{#90}│ {#94}󰅐 Uptime    {#90}",
       "format": "  {?days}{days} Days + {?}{hours}:{minutes}:{seconds}"
     },
 
     {
       "type": "de",
-      "key": "{#90}│ {#94}Desktop    {#90} ",
+      "key": "{#90}│ {#94} Desktop   {#90}",
       "format": "  {pretty-name}"
     },
 
     {
       "type": "wm",
-      "key": "{#90}│ {#94}WM         {#90} ",
+      "key": "{#90}│ {#94} WM        {#90}",
       "format": "  {pretty-name}"
     },
 
     {
       "type": "command",
-      "key": "{#90}│ {#94}System Age {#90} ",
+      "key": "{#90}│ {#94}󰌽 OS Age    {#90}",
       "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days",
       "format": "  {result}"
     },
 
     {
       "type": "terminal",
-      "key": "{#90}│ {#94}Terminal   {#90} ",
+      "key": "{#90}│ {#94} Terminal  {#90}",
       "format": "  {pretty-name}  {#2}[{version}]"
     },
 
