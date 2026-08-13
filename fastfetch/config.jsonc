@@ -109,13 +109,13 @@
     {
       "type": "de",
       "key": "{#90}│ {#94} Desktop   {#90}",
-      "format": "  {pretty-name}"
+      "format": "  {pretty-name} {#2}[v{version}]"
     },
 
     {
       "type": "wm",
       "key": "{#90}│ {#94} WM        {#90}",
-      "format": "  {pretty-name}"
+      "format": "  {pretty-name} {#2}[{protocol-name}]"
     },
 
     {
