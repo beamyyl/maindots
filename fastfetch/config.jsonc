@@ -46,6 +46,13 @@
     },
 
     {
+     "type": "host",
+     "key": "{#90}│ {#96}󰒋 Host       {#90}",
+     "showPeCoreCount": true,
+     "format": " {version} {#2}[{name}]"
+    },
+
+    {
       "type": "cpu",
       "key": "{#90}│ {#96} CPU       {#90}",
       "showPeCoreCount": true,
