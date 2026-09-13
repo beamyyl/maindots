@@ -26,25 +26,24 @@ set $wm_color_border_inactive_fg      #c0caf5
 set $wm_color_background              #1a1b26
 
 ### SwayFX Visuals ###
-corner_radius 4
-shadows on
-blur on
+#corner_radius 4
+#shadows on
+#blur on
+#default_dim_inactive 0.10
 
 # Transparency
 for_window [tiling] opacity 1.0
 for_window [floating] opacity 1.0
-default_dim_inactive 0.10
 
 ### Fix for app startup delay ###
 exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec /usr/lib/xdg-desktop-portal-gtk &
 
 ### Autostart & Hardware Settings ###
-exec qs -c noctalia-shell
-exec gentoo-pipewire-launcher restart
+exec noctalia
 exec swaybg -i walls/wall1.jpg -m fill
 exec $HOME/.local/bin/stacki3
-# also ofc, this ^ requires pipx install stacki3 and pipx ensurepath
+# this ^ requires pipx install stacki3 and pipx ensurepath
 
 # Input settings
 input "type:keyboard" {
